@@ -5,11 +5,11 @@ import Fab from "@mui/material/Fab"
 import Grid from '@mui/material/Grid'
 
 function DogCard () {
-  const { imageUrl, status, refreshDog } = useDogImage()
+  const { imageUrl, statusMessage, statusCode, refreshDog } = useDogImage()
 
   const handleNope = () => {
     refreshDog()
-    console.log(`new dog retrieved with ${status}`)
+    console.log(`new dog retrieved with ${statusCode} and message: ${statusMessage}`)
   }
 
   const handleMatch = () => {
