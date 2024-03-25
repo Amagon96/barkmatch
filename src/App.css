@@ -4,9 +4,9 @@ body {
   margin: 20px auto;
   padding: 0 10px;
   word-wrap: break-word;
-  color: #dbdbdb;
+  color: #464646;
   background: linear-gradient(
-    #161f27 70%,
+    #edf6ff 70%,
     transparent
   );
   text-rendering: optimizeLegibility;
@@ -21,6 +21,9 @@ main {
 }
 
 .container {
+  position: relative;
+  text-align: center;
+  color: #5e6770;
   height:70vh;
   place-items: center;
 }
@@ -37,4 +40,10 @@ img {
 
 footer {
   background-color: red;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
 }

@@ -4,9 +4,15 @@ import CloseIcon from '@mui/icons-material/Close'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import Fab from "@mui/material/Fab"
 import Grid from '@mui/material/Grid'
+import { useAppSelector } from "../../hooks/store"
+import { useFavsActions } from "../../hooks/useFavsActions"
+import { useEffect, useState } from "react"
+import { Typography } from "@mui/material"
 
 function DogCard () {
-  const favs = useSelector((state) => state.favs)
+  const favs = useAppSelector((state) => state.favs)
+  const { addNewFav } = useFavsActions()
+  const [error, setError] = useState<boolean>(false)
   const { imageUrl, statusMessage, statusCode, refreshDog } = useDogImage()
 
   const handleNope = () => {
@@ -15,15 +21,37 @@ function DogCard () {
   }
 
   const handleMatch = () => {
-    console.log({ favs });
-    
-    console.log('work in progress');
+    addNewFav({ dogImage: imageUrl, dogDescription: 'hello world' })
+    setError
+    refreshDog()
   }
+
+  useEffect(() => {
+    if (statusCode === 200 && statusMessage === 'success') {
+      setError(false)
+    } else {
+      setError(true)
+    }
+  }, [statusCode])
 
   return (
     <>
       <div className="container">
-        <img src={imageUrl} alt="a dog"/>
+        {
+          !error &&
+          <>
+            <img src={imageUrl} alt="a dog"/>
+            <div className="bottom-left">
+              <Typography variant="h5" component="h5">
+                Dog description
+              </Typography>
+            </div>
+          </>
+        }
+        {
+          error &&
+          <h1>Something went wrong</h1>
+        }
       </div>
       <Grid
         container

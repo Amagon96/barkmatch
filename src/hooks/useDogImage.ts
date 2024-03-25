@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getRandomDog } from '../services/randomDogImage'
+import { getRandomDogImage } from '../services/randomDogImage'
 import { DogRandomImageInterface } from '../interfaces/DogInterface'
 
 export const useDogImage = () => {
@@ -9,7 +9,7 @@ export const useDogImage = () => {
 
   const refreshDog = () => {
     const actualImage = imageUrl
-    getRandomDog()
+    getRandomDogImage()
       .then((newDog: DogRandomImageInterface) => {
         setImageUrl(newDog.message)
         setStatusMessage(newDog.status)

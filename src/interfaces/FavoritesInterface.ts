@@ -7,4 +7,4 @@ export interface FavoriteWithId extends Favorite{
   id: string;
 }
 
-export type FavoriteId = string;
+export type Id = string;

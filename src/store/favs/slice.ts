@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Favorite, FavoriteId, FavoriteWithId } from "../../interfaces/FavoritesInterface"
+import { Favorite, Id, FavoriteWithId } from "../../interfaces/FavoritesInterface"
 
 
 
@@ -13,7 +13,7 @@ export const favsSlice = createSlice({
       const id = crypto.randomUUID();
       return [...state, { id, ...action.payload }]
     },
-    deleteFavoriteById: (state, action: PayloadAction<FavoriteId>) => {
+    deleteFavoriteById: (state, action: PayloadAction<Id>) => {
       const id = action.payload;
       return state.filter((fav) => fav.id !== id)
     }

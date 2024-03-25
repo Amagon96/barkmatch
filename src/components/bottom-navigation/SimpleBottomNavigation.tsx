@@ -1,31 +1,52 @@
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
-import RestoreIcon from '@mui/icons-material/Restore'
+import PetsIcon from '@mui/icons-material/Pets'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import Paper from '@mui/material/Paper'
-import { ChangeEvent, useState } from 'react'
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 
 export default function SimpleBottomNavigation () {
-  const [value, setValue] = useState<number>(0)
-
-  const handleChange = (event: ChangeEvent<{}>, newValue: number) => {
-    event.preventDefault()
-    setValue(newValue)
-  }
+  const navigate = useNavigate()
 
   return (
     <Box sx={{ width: 500 }}>
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation
           showLabels
-          value={value}
-          onChange={handleChange}
+          value={useLocation().pathname}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<LocationOnIcon />} />
+          <BottomNavigationAction
+            component={Link}
+            to='/favs'
+            value='/favs'
+            onClick={() => navigate('/favs')}
+            label="Favorites"
+            icon={
+              <FavoriteIcon />
+            }
+          />
+          <BottomNavigationAction
+            component={Link}
+            to='/dogs'
+            value='/dogs'
+            onClick={() => navigate('/dogs')}
+            label="Home"
+            icon={
+              <PetsIcon />
+            }
+          />
+          <BottomNavigationAction
+            component={Link}
+            to='/else'
+            value='/else'
+            onClick={() => navigate('/')}
+            label="Archive"
+            icon={
+              <LocationOnIcon />
+            }
+          />
         </BottomNavigation>
       </Paper>
     </Box>
