@@ -1,10 +1,12 @@
+import { useDogImage } from "../../hooks/useDogImage"
+import { useSelector } from "react-redux"
 import CloseIcon from '@mui/icons-material/Close'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { useDogImage } from "../../hooks/useDogImage"
 import Fab from "@mui/material/Fab"
 import Grid from '@mui/material/Grid'
 
 function DogCard () {
+  const favs = useSelector((state) => state.favs)
   const { imageUrl, statusMessage, statusCode, refreshDog } = useDogImage()
 
   const handleNope = () => {
@@ -13,6 +15,8 @@ function DogCard () {
   }
 
   const handleMatch = () => {
+    console.log({ favs });
+    
     console.log('work in progress');
   }
 
@@ -54,12 +58,6 @@ function DogCard () {
           </Fab>
         </Grid>
       </Grid>
-      {/* <button 
-        onClick={handleClick}
-        style={{ marginTop: '5px' }}
-      >
-          New Dog
-      </button> */}
     </>
   )
 }
