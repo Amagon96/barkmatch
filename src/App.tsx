@@ -6,6 +6,8 @@ export default function App () {
   return (
     <main>
       <h1>Welcome to Barkmatch</h1>
+      <DogCard />
+      <SimpleBottomNavigation />
     </main>
   )
 }
