@@ -1,0 +1,40 @@
+body {
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 10px;
+  word-wrap: break-word;
+  color: #dbdbdb;
+  background: linear-gradient(
+    #161f27 70%,
+    transparent
+  );
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  display: flex;
+  flex-direction: column; 
+  place-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  height:70vh;
+  place-items: center;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  mask-image: linear-gradient(
+    black 80%,
+    transparent
+  );
+}
+
+footer {
+  background-color: red;
+}
