@@ -1,4 +1,4 @@
-import { Action, Dispatch, Middleware, MiddlewareAPI, configureStore } from "@reduxjs/toolkit"
+import { Middleware, configureStore } from "@reduxjs/toolkit"
 import favsReducer from './favs/slice'
 
 const persistanceLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {

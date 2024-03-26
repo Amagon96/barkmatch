@@ -1,27 +1,28 @@
 import { useDogImage } from "../../hooks/useDogImage"
-import { useSelector } from "react-redux"
 import CloseIcon from '@mui/icons-material/Close'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import Fab from "@mui/material/Fab"
 import Grid from '@mui/material/Grid'
-import { useAppSelector } from "../../hooks/store"
 import { useFavsActions } from "../../hooks/useFavsActions"
 import { useEffect, useState } from "react"
 import { Typography } from "@mui/material"
+import { useDogFact } from "../../hooks/useDogFact"
 
 function DogCard () {
-  const favs = useAppSelector((state) => state.favs)
   const { addNewFav } = useFavsActions()
   const [error, setError] = useState<boolean>(false)
   const { imageUrl, statusMessage, statusCode, refreshDog } = useDogImage()
+  const { dogFact, errorOnFact, refreshDogFact } = useDogFact()
 
   const handleNope = () => {
     refreshDog()
+    refreshDogFact()
     console.log(`new dog retrieved with ${statusCode} and message: ${statusMessage}`)
   }
 
   const handleMatch = () => {
-    addNewFav({ dogImage: imageUrl, dogDescription: 'hello world' })
+    refreshDogFact()
+    addNewFav({ dogImage: imageUrl, dogDescription: dogFact })
     setError
     refreshDog()
   }
@@ -42,8 +43,8 @@ function DogCard () {
           <>
             <img src={imageUrl} alt="a dog"/>
             <div className="bottom-left">
-              <Typography variant="h5" component="h5">
-                Dog description
+              <Typography variant="h6" component="h6">
+                { errorOnFact ? 'No decription found.' : dogFact }
               </Typography>
             </div>
           </>
@@ -52,40 +53,45 @@ function DogCard () {
           error &&
           <h1>Something went wrong</h1>
         }
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          sx={{
+            position: 'absolute',
+            bottom: '-35px'
+          }}
+        >
+          <Grid
+            item
+            xs={6}
+            sx={{ 
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '90%'
+            }}
+          >
+            <Fab color="secondary" aria-label="edit" onClick={handleNope} style={{ transform: 'scale(0.7)' }}>
+              <CloseIcon />
+            </Fab>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            sx={{ 
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center' 
+            }}
+          >
+            <Fab color="primary" aria-label="add" onClick={handleMatch} style={{ transform: 'scale(0.7)' }}>
+              <FavoriteIcon />
+            </Fab>
+          </Grid>
+        </Grid>
       </div>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid
-          item
-          xs={6}
-          sx={{ 
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center' 
-          }}
-        >
-          <Fab color="secondary" aria-label="edit" onClick={handleNope}>
-            <CloseIcon />
-          </Fab>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          sx={{ 
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center' 
-          }}
-        >
-          <Fab color="primary" aria-label="add" onClick={handleMatch}>
-            <FavoriteIcon />
-          </Fab>
-        </Grid>
-      </Grid>
     </>
   )
 }

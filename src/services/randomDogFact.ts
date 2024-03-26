@@ -1,9 +1,10 @@
-import { DogRandomImageInterface } from "../interfaces/DogInterface"
+import { DogRandomFactInterface } from "../interfaces/DogInterface"
 
-const DOG_RANDOM_IMAGE_URL = 'https://dog.ceo/api/breeds/image/random'
+const DOG_RANDOM_FACT_URL = 'https://dogapi.dog/api/v2/facts'
 
-export const getRandomDogFact = async (): Promise<DogRandomImageInterface> => {
-  const res = await fetch(DOG_RANDOM_IMAGE_URL)
+export const getRandomDogFact = async (): Promise<DogRandomFactInterface> => {
+  const res = await fetch(DOG_RANDOM_FACT_URL)
   const data = await res.json()
+  console.log(data)
   return { ...data }
 }

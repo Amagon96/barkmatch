@@ -7,7 +7,7 @@ export const useDogImage = () => {
   const [statusMessage, setStatusMessage] = useState<string>('')
   const [statusCode, setStatusCode] = useState<number>()
 
-  const refreshDog = () => {
+  const refreshDogImage = () => {
     const actualImage = imageUrl
     getRandomDogImage()
       .then((newDog: DogRandomImageInterface) => {
@@ -23,7 +23,7 @@ export const useDogImage = () => {
       })
   }
 
-  useEffect(refreshDog, [])
+  useEffect(refreshDogImage, [])
 
-  return { imageUrl, statusMessage, statusCode, refreshDog }
+  return { imageUrl, statusMessage, statusCode, refreshDog: refreshDogImage }
 }

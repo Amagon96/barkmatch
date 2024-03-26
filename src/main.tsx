@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SimpleBottomNavigation from './components/bottom-navigation/SimpleBottomNavigation.tsx'
 import DogCard from './components/profile-card/DogCard.tsx'
+import { Favorites } from './components/favorites/Favorites.tsx'
 
 const router = createBrowserRouter([
   {
@@ -16,9 +17,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <DogCard /> },
       {
-        path: "dogs",
+        path: 'dogs',
         element: <DogCard />,
       },
+      {
+        path: 'favs',
+        element: <Favorites />,
+      }
     ],
   }
 ])
