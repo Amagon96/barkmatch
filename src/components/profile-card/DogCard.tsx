@@ -1,12 +1,12 @@
-import { useDogImage } from "../../hooks/useDogImage"
+import { useDogImage } from '../../hooks/useDogImage'
 import CloseIcon from '@mui/icons-material/Close'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import Fab from "@mui/material/Fab"
+import Fab from '@mui/material/Fab'
 import Grid from '@mui/material/Grid'
-import { useFavsActions } from "../../hooks/useFavsActions"
-import { useEffect, useState } from "react"
-import { Typography } from "@mui/material"
-import { useDogFact } from "../../hooks/useDogFact"
+import { useFavsActions } from '../../hooks/useFavsActions'
+import { useEffect, useState } from 'react'
+import { Typography } from '@mui/material'
+import { useDogFact } from '../../hooks/useDogFact'
 
 function DogCard () {
   const { addNewFav } = useFavsActions()
@@ -37,13 +37,13 @@ function DogCard () {
 
   return (
     <>
-      <div className="container">
+      <div className='container' data-testid='dog-card-container'>
         {
           !error &&
           <>
-            <img src={imageUrl} alt="a dog"/>
-            <div className="bottom-left">
-              <Typography variant="h6" component="h6">
+            <img src={imageUrl} alt='a dog' data-testid='dog-image'/>
+            <div className='bottom-left' data-testid='dog-desc-container'>
+              <Typography variant='h6' component='h6' data-testid='dog-desc-text'>
                 { errorOnFact ? 'No decription found.' : dogFact }
               </Typography>
             </div>
@@ -55,9 +55,9 @@ function DogCard () {
         }
         <Grid
           container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
+          direction='row'
+          justifyContent='center'
+          alignItems='center'
           sx={{
             position: 'absolute',
             bottom: '-35px'
@@ -73,7 +73,7 @@ function DogCard () {
               width: '90%'
             }}
           >
-            <Fab color="secondary" aria-label="edit" onClick={handleNope} style={{ transform: 'scale(0.7)' }}>
+            <Fab color='secondary' aria-label='edit' onClick={handleNope} style={{ transform: 'scale(0.7)' }}>
               <CloseIcon />
             </Fab>
           </Grid>
@@ -86,7 +86,7 @@ function DogCard () {
               alignItems: 'center' 
             }}
           >
-            <Fab color="primary" aria-label="add" onClick={handleMatch} style={{ transform: 'scale(0.7)' }}>
+            <Fab color='primary' aria-label='add' onClick={handleMatch} style={{ transform: 'scale(0.7)' }}>
               <FavoriteIcon />
             </Fab>
           </Grid>

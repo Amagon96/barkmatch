@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Favorite, Id, FavoriteWithId } from "../../interfaces/FavoritesInterface"
 
-
-
 const DEFAULT_STATE: FavoriteWithId[] = []
 
 const initialState: FavoriteWithId[] = (() => {
