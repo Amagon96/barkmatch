@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
-import SimpleBottomNavigation from './components/bottom-navigation/SimpleBottomNavigation'
-import { AppBar, Box, Toolbar, Typography } from '@mui/material'
+import NavigationBar from './components/bottom-navigation/NavigationBar'
+import { Typography } from '@mui/material'
 
 export default function App () {
   return (
@@ -11,7 +11,7 @@ export default function App () {
           Welcome to Barkmatch
         </Typography>
         <Outlet />
-        <SimpleBottomNavigation />
+        <NavigationBar />
       </main>
     </>
   )

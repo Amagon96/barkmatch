@@ -36,13 +36,24 @@ img {
   );
 }
 
-@media screen and (max-width: 320px) and (max-height: 640px) {
-  .bottom-left {
-    position: absolute;
-    bottom: 25px;
-    left: 16px;
-    text-align: start;
-    color: #212121;
+.bottom-left {
+  position: absolute;
+  bottom: 25px;
+  left: 16px;
+  text-align: start;
+  color: #212121;
+}
+
+.side-navigation {
+  display: none;
+}
+
+@media (min-width:1020px) {
+  .bottom-navigation-container {
+    display: none;
+  }
+  .side-navigation {
+    display: flex;
   }
 }
 

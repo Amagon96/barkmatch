@@ -3,7 +3,7 @@ import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import PetsIcon from '@mui/icons-material/Pets'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
+import InfoIcon from '@mui/icons-material/Info'
 import Paper from '@mui/material/Paper'
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ export default function SimpleBottomNavigation () {
   const navigate = useNavigate()
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 500 }} className='bottom-navigation-container'>
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation
           showLabels
@@ -39,12 +39,12 @@ export default function SimpleBottomNavigation () {
           />
           <BottomNavigationAction
             component={Link}
-            to='/else'
-            value='/else'
-            onClick={() => navigate('/')}
-            label="Archive"
+            to='/about'
+            value='/about'
+            onClick={() => navigate('/about')}
+            label="About"
             icon={
-              <LocationOnIcon />
+              <InfoIcon />
             }
           />
         </BottomNavigation>

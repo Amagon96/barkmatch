@@ -6,9 +6,9 @@ import './index.css'
 import { store } from './store'
 import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import SimpleBottomNavigation from './components/bottom-navigation/SimpleBottomNavigation.tsx'
 import DogCard from './components/profile-card/DogCard.tsx'
 import { Favorites } from './components/favorites/Favorites.tsx'
+import About from './components/about-me/AboutMe.tsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'favs',
         element: <Favorites />,
+      },
+      {
+        path: 'about',
+        element: <About />
       }
     ],
   }
