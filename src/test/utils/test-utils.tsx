@@ -4,14 +4,16 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 
 import favsReducer from '../../store/favs/slice'
+import { FavoriteWithId } from '../../interfaces/FavoritesInterface'
+
+const preloadedState: FavoriteWithId[] = []
 
 export function renderWithProviders(
   ui: React.ReactElement,
   {
-    preloadedState = {},
     // Automatically create a store instance if no store was passed in
     store = configureStore({
-      reducer: { favs: favsReducer },
+      reducer: favsReducer,
       preloadedState,
     }),
     ...renderOptions

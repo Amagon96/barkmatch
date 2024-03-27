@@ -73,7 +73,7 @@ function DogCard () {
               width: '90%'
             }}
           >
-            <Fab color='secondary' aria-label='edit' onClick={handleNope} style={{ transform: 'scale(0.7)' }}>
+            <Fab color='secondary' aria-label='edit' onClick={handleNope} data-testid='nope-button' style={{ transform: 'scale(0.7)' }}>
               <CloseIcon />
             </Fab>
           </Grid>
